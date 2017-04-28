@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+
+
+<div class="container">
+
+    <div class="mt-3">
+        <h2 th:text="${contactModel.title}">Welcome to huanli's inbox</h2>
+    </div>
+
+    <p>
+        <a class="btn btn-primary" href="/users/form" th:href="@{/users/form}" role="button">添加联系人</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <td>UserName</td>
+
+            <td>未读消息</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${contactModel.contactsList.size()} eq 0">
+            <td colspan="2">您还没有联系人！！</td>
+        </tr>
+        <tr th:each="contact : ${contactModel.contactsList}">
+
+            <td><a href="../users/chats.html" th:href="@{'/users/' + ${contact.getUserName()}}"
+                   th:text="${contact.getUserName()}"></a></td>
+            <td th:text="${contact.getUnReadCount()}"></td>
+            <td><a th:href="@{'/contacts/' + ${contact.getUserName()}}"
+                   th:text="删除该联系人"></a></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div><!-- /.container -->
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+
+</body>
+</html>
