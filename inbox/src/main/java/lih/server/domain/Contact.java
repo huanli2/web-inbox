@@ -1,11 +1,8 @@
 package lih.server.domain;
 
-import lombok.Data;
-
 /**
- * Created by sxcheng on 28/04/2017.
+ * Created by huanli on 28/04/2017.
  */
-@Data
 public class Contact extends User {
 
     private int unReadCount;

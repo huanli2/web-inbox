@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+    <body>
+
+    <div class="container blog-content-container">
+
+        <p th:if="${isEmpty}" th:text="${errMsg}">用户未输入用户名或密码！</p>
+
+		<form th:action="@{/register}"  method="post">
+			<h2 class="form-signin-heading">注册用户</h2>
+			
+			<div class="form-group col-md-5">
+				<label for="username" class="col-form-label">用户名</label>
+				<input type="text" class="form-control" id="userName" name="userName" maxlength="50" placeholder="请输入账号">
+
+			<div class="form-group col-md-5">
+				<label for="password" class="col-form-label">密码</label>
+				<input type="password" class="form-control" id="password" name="password" maxlength="50" placeholder="请输入密码" >
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">提交</button>
+			</div> 
+		</form>
+
+        <p>已经有账号了？<a href="/login" th:href="@{/login}">返回登陆</a></p>
+    </div> <!-- /container -->
+ 
+	
+	<div th:replace="~{fragments/footer :: footer}">...</div>
+    </body>
+</html>
