@@ -1,17 +1,23 @@
 package lih.server.controller;
 
+import lih.server.domain.Chat;
+import lih.server.domain.ChatHistory;
 import lih.server.domain.Search;
 import lih.services.UserService;
+import lih.services.objects.MessageService;
 import lih.utils.AuthUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 /**
@@ -30,6 +36,9 @@ public class UserController {
 
     @Autowired
     private AuthUtils utils;
+
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping("/search")
     public String search(Model model) {
@@ -60,10 +69,46 @@ public class UserController {
 
     }
 
-    @RequestMapping("/chats/{username}")
-    public String chat(@PathVariable("userName")String userName) {
+    @GetMapping("/chats/{username}")
+    public String chat(@PathVariable("username")String username, Model model) {
 
-        //TODO
+        String name = utils.getUserName();
+
+
+        model.addAttribute("username2", username);
+
+        messageService.readAllMessages(username, name);
+
+        List<ChatHistory> historyList = messageService.getChatHistory(name, username);
+
+        LOGGER.info("history size:{} between {} and {}", historyList.size(), username, name);
+
+        model.addAttribute("chatHistory", historyList);
+
+        return "users/chats";
+    }
+
+    @PostMapping("/chats/{username}/send")
+    public String chat(Chat chat, @PathVariable("username") String username, Model model) {
+
+        String name = utils.getUserName();
+        String message = chat.getMessage();
+
+        LOGGER.info("{} send message:{} to {}", name, message, username);
+
+        if (StringUtils.isEmpty(chat.getMessage())) {
+
+            model.addAttribute("username2", "发送消息不能为空！");
+
+        } else {
+
+            messageService.sendMessage(name, username, message);
+
+            model.addAttribute("username2", username);
+        }
+
+        model.addAttribute("chatHistory", messageService.getChatHistory(name, username));
+
         return "users/chats";
     }
 }

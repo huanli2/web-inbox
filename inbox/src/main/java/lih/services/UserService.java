@@ -13,4 +13,5 @@ public interface UserService {
     void addUser(User user);
 
     List<UserContact> searchUsers(String input, String username);
+
 }

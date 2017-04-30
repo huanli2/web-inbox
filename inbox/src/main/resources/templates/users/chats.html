@@ -7,21 +7,53 @@
 
 <div class="chat_window">
     <div class="top_menu">
-        <div class="buttons">
-            <div class="button close"></div>
-            <div class="button minimize"></div>
-            <div class="button maximize"></div>
-        </div>
-        <div class="title">Chat</div>
+        <div class="title" th:text="${username2}"></div>
     </div>
-    <ul class="messages"></ul>
-    <div class="bottom_wrapper clearfix">
-        <div class="message_input_wrapper"><input class="message_input" placeholder="Type your message here..."/></div>
-        <div class="send_message">
-            <div class="icon"></div>
-            <div class="text">Send</div>
-        </div>
+
+
+    <div class="messages">
+
+        <table class="table table-fixed">
+            <thead>
+            <tr>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="chat : ${chatHistory}">
+
+                <td th:text="${chat.getSender()}"></td>
+                <td th:text="${chat.getContent()}"></td>
+                <td th:text="${chat.getSenderDateString()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
+
+
+    <!--<div th:if="${chatHistory.size()} gt 0">-->
+        <!--<ul class="messages" th:each="chat : ${chatHistory}">-->
+            <!--&lt;!&ndash;?\<li class=".message.right">&ndash;&gt;-->
+            <!--<li class=".messages" th:text="${chat.getSender()} + ':(' + ${chat.getSenderDateString()} + ')'">-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
+
+    <form th:action="@{'/users/chats/' + ${username2} + '/send'}" method="post">
+
+        <div class="bottom_wrapper clearfix">
+            <input class="message_input_wrapper" id="message" name="message" autofocus="autofocus" placeholder="在这里输入消息..."/>
+            <!--<div class="send_message">-->
+                <!--<div class="icon"></div>-->
+                <!--<div class="text">Send</div>-->
+            <!--</div>-->
+
+            <input class="send_message icon"  type="submit" th:value="发送" />
+        </div>
+    </form>
+
+
 </div>
 <div class="message_template">
     <li class="message">
@@ -31,8 +63,6 @@
         </div>
     </li>
 </div>
-
-<div th:replace="~{fragments/footer :: footer}">...</div>
 
 </body>
 </html>

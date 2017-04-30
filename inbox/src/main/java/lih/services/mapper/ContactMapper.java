@@ -18,7 +18,7 @@ public interface ContactMapper {
 
 
     @Select("select c.user2_name as userName, count(m.id) as unReadCount from contacts c " +
-            "left join messages m on m.sender = c.user2_name and m.is_read = false " +
+            "left join messages m on m.sender = c.user2_name and m.is_read = false and m.receiver = #{username} " +
             "where c.user1_name = #{username} and c.is_deleted = false " +
             "group by c.user2_name")
     List<Contact> getContactsUnreadNum(@Param("username") String username);
