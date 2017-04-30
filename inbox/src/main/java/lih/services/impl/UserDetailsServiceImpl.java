@@ -2,7 +2,7 @@ package lih.services.impl;
 
 import lih.services.mapper.UserMapper;
 import lih.services.models.UserWithSalt;
-import lih.services.objects.User;
+import lih.services.objects.Users;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LOGGER.info("check for username: {}", username);
 
-        User user = mapper.getUser(username);
+        Users user = mapper.getUser(username);
 
         if(user == null) {
             throw new UsernameNotFoundException(username);

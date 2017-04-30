@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                       .failureUrl("/login-error")
-                      .defaultSuccessUrl("/contacts/list/${username}", true)
+                      .defaultSuccessUrl("/contacts/list", true)
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
 

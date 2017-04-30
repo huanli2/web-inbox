@@ -22,4 +22,16 @@ create table contacts (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+create table messages (
+    id int(8) NOT NULL AUTO_INCREMENT comment 'id',
+    sender varchar(100) not null comment '发消息者',
+    receiver VARCHAR (100) not NULL comment '接收消息者',
+    content VARCHAR (256) not null comment '消息内容',
+    added_time datetime not null DEFAULT CURRENT_TIMESTAMP,
+    is_read bit not null DEFAULT 0 comment '是否已读',
+    read_time datetime not null DEFAULT '1900-01-01 00:00:00.000' comment '消息阅读时间',
+
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 

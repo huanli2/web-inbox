@@ -2,9 +2,11 @@ package lih.services.impl;
 
 import lih.server.domain.Contact;
 import lih.services.ContactService;
+import lih.services.mapper.ContactMapper;
+import lih.services.objects.Contacts;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,22 +15,24 @@ import java.util.List;
 @Service
 public class ContactServiceImpl implements ContactService {
 
+    @Autowired
+    private ContactMapper mapper;
+
     @Override
     public List<Contact> getContacts(String username) {
-        List<Contact> contacts = new ArrayList<Contact>();
-        contacts.add(new Contact("张三"));
-        contacts.add(new Contact("lli", 1));
 
-        return contacts;
+        return mapper.getContactsUnreadNum(username);
     }
 
     @Override
     public void deleteContact(String deletedBy, String deletedUser) {
-        //TODO
+
+        mapper.deleteContacts(deletedBy, deletedUser);
     }
 
     @Override
     public void addContact(String user1, String user2) {
-        //TODO
+        Contacts c = new Contacts(user1, user2);
+        mapper.addContact(c);
     }
 }

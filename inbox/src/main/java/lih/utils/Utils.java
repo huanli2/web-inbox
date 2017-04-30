@@ -1,4 +1,4 @@
-package lih.services.utils;
+package lih.utils;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;

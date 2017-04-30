@@ -13,7 +13,7 @@
     </div>
 
     <p>
-        <a class="btn btn-primary" href="/users/form" th:href="@{/users/search/{username}}" role="button">查找用户</a>
+        <a class="btn btn-primary" th:href="@{'/users/search'}" role="button">查找用户</a>
     </p>
 
     <table class="table table-hover">
@@ -30,10 +30,10 @@
         </tr>
         <tr th:each="contact : ${contactsList}">
 
-            <td><a href="../users/search.html" th:href="@{'/users/' + ${contact.getUserName()}}"
+            <td><a href="/users/chats.html" th:href="@{'/users/chats/' + ${contact.getUserName()}}"
                    th:text="${contact.getUserName()}"></a></td>
             <td th:text="${contact.getUnReadCount()}"></td>
-            <td><a th:href="@{'/contacts/' + ${contact.getUserName()}}"
+            <td><a th:href="@{'/contacts/delete/' + ${contact.getUserName()}}"
                    th:text="删除该联系人"></a></td>
 
         </tr>

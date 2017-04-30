@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by huanli on 29/04/2017.
  */
-public class User {
+public class Users {
     private long id;
 
     private String username;

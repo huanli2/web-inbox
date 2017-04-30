@@ -1,4 +1,4 @@
-package lih.services.utils;
+package lih.utils;
 
 import org.junit.Assert;
 import org.junit.Test;

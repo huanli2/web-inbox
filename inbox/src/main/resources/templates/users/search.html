@@ -16,7 +16,7 @@
 
                 <div class="input-group col-md-12">
                     <input type="text" class="form-control input-lg"
-                           id="username" name="username" autofocus="autofocus" placeholder="输入用户名" />
+                           id="search" name="search" autofocus="autofocus" placeholder="输入用户名" />
                     <span class="input-group-btn">
                         <input class="btn btn-info btn-lg"  type="submit" th:value="搜索" />
                     </span>
@@ -45,7 +45,7 @@
                 <td th:if="${user.isContact()}">是</td>
                 <td th:if="!${user.isContact()}">否</td>
                 <td><a th:if="!${user.isContact()}"
-                       th:href="@{'/contacts/{username}/add/' + ${user.getUsername()}}"
+                       th:href="@{'/contacts/add/' + ${user.getUsername()}}"
                        th:text="添加"></a>
                 </td>
 
