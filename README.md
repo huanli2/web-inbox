@@ -1,5 +1,8 @@
 # Web私信系统
 
+## 演示地址：
+* http://inbox.sxcheng.com:8080
+
 ### 使用技术
 * web前端：Spring Thymleaf + bootsrap
 * Web后端：Spring boot(Spring MVC) + Spring Security
