@@ -11,6 +11,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import lih.services.SecurityService;
+
 /**
  * Created by huanli on 29/04/2017.
  */
@@ -22,6 +24,9 @@ public class MainController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private SecurityService securityService;
 
     @GetMapping(value={"/", "/index"})
     public String root() {
@@ -67,7 +72,9 @@ public class MainController {
 
             userService.addUser(user);
 
-            return "redirect:/login";
+            securityService.autologin(user.getUserName(), user.getPassword());
+
+            return "redirect:/";
         }
 
     }

@@ -19,6 +19,7 @@
 ### 注册
 * 用户名(username)唯一标识用户，只保存用户的username和password信息。
 * 密码使用密文存储，存储方式为：sha-1加密密码明文 + salt
+* 注册成功后自动登陆
 ![](images/register.png)
 
 ### 登陆、登出与授权管理
@@ -52,10 +53,9 @@
 * 接口对联系人和用户检查
 * 实时刷新未读消息、实时刷新联系人、实时消息接收
 
-注册完自动登录：
-* https://github.com/hellokoding/registration-login-spring-hsql/blob/master/src/main/java/com/hellokoding/auth/service/SecurityServiceImpl.java
-
 参考资料：
+* 注册后自动登陆
+  -  https://github.com/hellokoding/registration-login-spring-hsql/blob/master/src/main/java/com/hellokoding/auth/service/SecurityServiceImpl.java
 * https://www.gitbook.com/book/waylau/spring-security-tutorial/details
 * https://github.com/waylau/spring-security-tutorial
 * https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-sql
