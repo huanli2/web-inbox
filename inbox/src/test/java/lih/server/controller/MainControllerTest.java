@@ -3,9 +3,6 @@
  */
 package lih.server.controller;
 
-import lih.server.config.Config;
-import lih.server.config.SecurityConfig;
-import lih.server.domain.User;
 import lih.services.SecurityService;
 import lih.services.UserService;
 import org.junit.Before;
@@ -39,7 +36,7 @@ public class MainControllerTest {
     private SecurityService securityService;
 
     @InjectMocks
-    MainController mainController;
+    private MainController mainController;
 
     @Before
     public void setUp() throws Exception {

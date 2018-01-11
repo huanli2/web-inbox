@@ -53,7 +53,7 @@ public class ContactController {
         contactService.deleteContact(name, userName);
 
         model.addAttribute("contactsList", contactService.getContacts(name));
-        model.addAttribute("title", name + "已经从您的联系人列表删除");
+        model.addAttribute("title", userName + "已经从您的联系人列表删除");
 
         return "contacts/list";
     }

@@ -19,7 +19,10 @@ public class UtilsTest {
         String shaPwd = "4d5f74bae6a5c16a0ac7fdb349f81b201818885b";
 
         Assert.assertEquals(utils.sha1Password(pwd, salt), shaPwd);
+    }
 
-        //Assert.assertEquals(new ShaPasswordEncoder().encodePassword(pwd, salt), shaPwd);
+    @Test
+    public void generateSalt() {
+        Assert.assertEquals(utils.generateSalt().length(), 12);
     }
 }
