@@ -54,6 +54,8 @@
 * 实时刷新未读消息、实时刷新联系人、实时消息接收
 
 参考资料：
+* spring controller写ut：
+  - http://zhaozhiming.github.io/blog/2014/06/16/spring-mvc-unit-test-part-1/
 * 注册后自动登陆
   -  https://github.com/hellokoding/registration-login-spring-hsql/blob/master/src/main/java/com/hellokoding/auth/service/SecurityServiceImpl.java
 * https://www.gitbook.com/book/waylau/spring-security-tutorial/details
